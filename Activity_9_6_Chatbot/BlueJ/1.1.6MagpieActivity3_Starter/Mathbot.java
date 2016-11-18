@@ -1,11 +1,29 @@
 
 /**
- * Write a description of class Mathbot here.
+ * Mathbot is a complex chatbot that has the capability to carry a conversation, as well as answer mathmatical quetions.
+ * This version:
+ * <ul><li>
+ * Uses advanced search for keywords 
+ * </li></ul>
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Brian Anderson, Vikram Rajan 
+ * @version November 2016
  */
 import java.util.Scanner;
+import java.util.stream.*;
+import java.io.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.util.Random;
+
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
 public class Mathbot
 {
     /**
@@ -15,11 +33,11 @@ public class Mathbot
      */
     public String getGreeting()
     {
-        return "What would you like to know about mathematics?";
+        return "Hello, I am MathBot!" +" */" + "Ask me any math question or enter in a random letter to hear a math pun!";
     }
 
     /**
-     * Gives a response to a user statement
+     * Gives a response to a user statement, generally math-based
      * 
      * @param statement
      *            the user statement
@@ -54,8 +72,7 @@ public class Mathbot
             
         }
         else if (findKeyword(statement, "minus") >= 0
-        || (findKeyword(statement, "subtract") >= 0)
-        || (findKeyword(statement, "-") >= 0))
+        || (findKeyword(statement, "subtract") >= 0))
         {
             Scanner user_input = new Scanner(System.in);
             
@@ -136,7 +153,25 @@ public class Mathbot
             System.out.println("The answer is " + z);
             
         }
-
+        else if (findKeyword(statement, "hypotenuse") >= 0)
+        {
+        Scanner user_input = new Scanner(System.in);
+            String num1;
+            System.out.println("What is the length of Side A?");
+            num1 = user_input.next();
+            double x = Integer.parseInt(num1);
+            
+            String num2;
+            System.out.println("What is the length of Side B?");
+            num2 = user_input.next();
+            double y = Integer.parseInt(num2);
+            
+            double a = Math.pow(x,2);
+            double b = Math.pow(y,2);
+            double c = a + b;
+            double z = Math.pow(c,.5);
+            System.out.println("The hypotenuse is " + z);
+        } 
         else if (findKeyword(statement, "area") >= 0)
         {
            Scanner user_input = new Scanner(System.in);
@@ -184,6 +219,28 @@ public class Mathbot
             num4 = user_input.next();
             double x = Integer.parseInt(num4);
             double z = x * y;
+            
+            System.out.println("The area of the shape is " + z);
+            
+           }
+           if (findKeyword(num2, "trapezoid") >= 0)
+           {
+            String num3;
+            System.out.println("What is base 1?");
+            num3 = user_input.next();
+            double y = Integer.parseInt(num3);
+            
+            String num4;
+            System.out.println("What is  base 2?");
+            num4 = user_input.next();
+            double x = Integer.parseInt(num4);
+            
+            String num5;
+            System.out.println("What is the height?");
+            num5 = user_input.next();
+            double v = Integer.parseInt(num5);
+            
+            double z = x * y * v * 0.5;
             
             System.out.println("The area of the shape is " + z);
             
