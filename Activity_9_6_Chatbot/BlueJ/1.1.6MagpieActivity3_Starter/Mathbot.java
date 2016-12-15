@@ -1,4 +1,5 @@
 
+
 /**
  * Mathbot is a complex chatbot that has the capability to carry a conversation, as well as answer mathmatical quetions.
  * This version:
@@ -19,6 +20,8 @@ import java.awt.Graphics2D;
 import java.util.Random;
 
 
+
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Graphics;
@@ -35,22 +38,20 @@ public class Mathbot
     {
         return "Hello, I am MathBot!" +" */" + "Ask me any math question or enter in a random letter to hear a math pun!";
     }
-
-    /**
-     * Gives a response to a user statement, generally math-based
+/**
+     * Get a response
      * 
-     * @param statement
-     *            the user statement
-     * @return a response based on the rules given
+     * @return a response based on various inputs
      */
-    public String getResponse(String statement)
+   
+    public String getResponse(String statement)   //this method makes the chatbot say some sentences before anything else
     {
         String response = "";
         if (statement.length() == 0)
         {
             response = "You have to ask a question to get an answer.";
         }
-        else if (findKeyword(statement, "add") >= 0
+        else if (findKeyword(statement, "add") >= 0  //this detects the keyword “add” and subsequently adds any sequence of numbers
         || (findKeyword(statement, "plus") >= 0)
         || (findKeyword(statement, "+") >= 0))
         {
@@ -71,7 +72,7 @@ public class Mathbot
             System.out.println("The answer is " + z);
             
         }
-        else if (findKeyword(statement, "minus") >= 0
+        else if (findKeyword(statement, "minus") >= 0   //this detects the keyword “subtract” and subsequently subtracts any sequence of numbers through the scanner package
         || (findKeyword(statement, "subtract") >= 0))
         {
             Scanner user_input = new Scanner(System.in);
@@ -91,7 +92,7 @@ public class Mathbot
             System.out.println("The answer is " + z);
             
         }
-        else if (findKeyword(statement, "multiply") >= 0
+        else if (findKeyword(statement, "multiply") >= 0  //this detects the keyword “multiply” and subsequently multiplies any sequence of numbers through the scanner package
         || (findKeyword(statement, "times") >= 0)
         || (findKeyword(statement, "*") >= 0))
         {
@@ -112,7 +113,7 @@ public class Mathbot
             System.out.println("The answer is " + z);
             
         }
-        else if (findKeyword(statement, "divide") >= 0
+        else if (findKeyword(statement, "divide") >= 0   //this detects the keyword “divide” and subsequently divides any sequence of numbers through the scanner package
         || (findKeyword(statement, "division") >= 0)
         || (findKeyword(statement, "*") >= 0))
         {
@@ -133,7 +134,7 @@ public class Mathbot
             System.out.println("The answer is " + z);
             
         }
-        else if (findKeyword(statement, "root") >= 0)
+        else if (findKeyword(statement, "root") >= 0)  //this detects the keyword “root” and subsequently performs a root of any type, square root or cube root, etc…,  any sequence of numbers through the scanner package
         {
             Scanner user_input = new Scanner(System.in);
             
@@ -153,7 +154,7 @@ public class Mathbot
             System.out.println("The answer is " + z);
             
         }
-        else if (findKeyword(statement, "hypotenuse") >= 0)
+        else if (findKeyword(statement, "hypotenuse") >= 0)  //this detects the keyword “hypotenuse” and subsequently finds the hypotenuse for any sequence of two numbers - the legs of the triangle - through the scanner package
         {
         Scanner user_input = new Scanner(System.in);
             String num1;
@@ -172,8 +173,8 @@ public class Mathbot
             double z = Math.pow(c,.5);
             System.out.println("The hypotenuse is " + z);
         } 
-        else if (findKeyword(statement, "area") >= 0)
-        {
+        else if (findKeyword(statement, "area") >= 0)  //this detects the keyword “area” and will find the area of any shape through the scanner package
+        { 
            Scanner user_input = new Scanner(System.in);
             
                String num2;
@@ -223,34 +224,12 @@ public class Mathbot
             System.out.println("The area of the shape is " + z);
             
            }
-           if (findKeyword(num2, "trapezoid") >= 0)
-           {
-            String num3;
-            System.out.println("What is base 1?");
-            num3 = user_input.next();
-            double y = Integer.parseInt(num3);
-            
-            String num4;
-            System.out.println("What is  base 2?");
-            num4 = user_input.next();
-            double x = Integer.parseInt(num4);
-            
-            String num5;
-            System.out.println("What is the height?");
-            num5 = user_input.next();
-            double v = Integer.parseInt(num5);
-            
-            double z = x * y * v * 0.5;
-            
-            System.out.println("The area of the shape is " + z);
-            
-           }
            else
            {
             response = "Unfortunately, my database is not equipped to deal with that kind of area";
            }   
         }
-        else if(findKeyword(statement, "mean") >= 0
+        else if(findKeyword(statement, "mean") >= 0 //this method finds the average of any sewqunece of numbers
         || (findKeyword(statement, "average") >= 0))
         {
             int sum = 0, inputNum;
@@ -279,6 +258,8 @@ public class Mathbot
     }
 
 
+
+
         else if (findKeyword(statement, "physics") >= 0
         || findKeyword(statement, "algebra") >= 0
         || findKeyword(statement, "geometry") >= 0
@@ -289,10 +270,11 @@ public class Mathbot
         }
         else
         {
-            response = getRandomResponse();
+            response = getRandomResponse(); // this taps into a database of stored math puns, which randomly cycle through
         }
         return response;
     }
+
 
     /**
      * Search for one word in phrase. The search is not case
@@ -319,6 +301,7 @@ public class Mathbot
         int psn = phrase.toLowerCase().indexOf(
                 goal.toLowerCase(), startPos);
 
+
         // Refinement--make sure the goal isn't part of a
         // word
         while (psn >= 0)
@@ -339,6 +322,7 @@ public class Mathbot
                 .toLowerCase();
             }
 
+
             // If before and after aren't letters, we've
             // found the word
             if (((before.compareTo("a") < 0) || (before
@@ -350,15 +334,19 @@ public class Mathbot
                 return psn;
             }
 
+
             // The last position didn't work, so let's find
             // the next, if there is one.
             psn = phrase.indexOf(goal.toLowerCase(),
                 psn + 1);
 
+
         }
+
 
         return -1;
     }
+
 
     /**
      * Search for one word in phrase. The search is not case
@@ -379,6 +367,7 @@ public class Mathbot
         return findKeyword(statement, goal, 0);
     }
 
+
     /**
      * Pick a default response to use if nothing else fits.
      * 
@@ -390,6 +379,7 @@ public class Mathbot
         double r = Math.random();
         int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
         String response = "";
+
 
         if (whichResponse == 0)
         {
@@ -434,4 +424,11 @@ public class Mathbot
         return response;
     }
 
+
 }
+
+
+
+
+
+
